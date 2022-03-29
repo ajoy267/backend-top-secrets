@@ -19,7 +19,7 @@ describe('backend-top-secrets routes', () => {
   });
 
   it('should create a new user with an email/password', async () => {
-    const res = await request(app).post('/api/v1/users/signup').send(mockUser);
+    const res = await request(app).post('/api/v1/users/').send(mockUser);
     const { email } = mockUser;
 
     expect(res.body).toEqual({ id: expect.any(String), email });
