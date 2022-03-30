@@ -44,8 +44,8 @@ describe('backend-top-secrets routes', () => {
 
     const expected = [
       {
-        title: 'Assingment',
-        description: 'this is hard',
+        title: 'I hope this works',
+        description: 'because if it doesnt i need to re-evaluate my code',
         createdAt: expect.any(String),
       },
     ];
