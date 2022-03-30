@@ -36,4 +36,21 @@ describe('backend-top-secrets routes', () => {
       createdAt: expect.any(String),
     });
   });
+
+  it('should get all the secrets if a user is signed in', async () => {
+    const agent = request.agent(app);
+    await UserService.create({ ...mockUser });
+    await agent.post('/api/v1/users/sessions').send(mockUser);
+
+    const expected = [
+      {
+        title: 'Assingment',
+        description: 'this is hard',
+        createdAt: expect.any(String),
+      },
+    ];
+    const res = await agent.get('/api/v1/secrets');
+
+    expect(res.body).toEqual(expected);
+  });
 });
