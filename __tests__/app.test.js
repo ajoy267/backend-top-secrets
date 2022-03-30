@@ -28,7 +28,9 @@ describe('backend-top-secrets routes', () => {
 
   it('should let a user sign in if the email/password match', async () => {
     const user = await UserService.create(mockUser);
-    const res = await request(app).post('/api/v1/users/session').send(mockUser);
+    const res = await request(app)
+      .post('/api/v1/users/sessions')
+      .send(mockUser);
 
     expect(res.body).toEqual({ message: 'Sign in Successful', user });
   });
