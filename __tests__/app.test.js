@@ -32,6 +32,6 @@ describe('backend-top-secrets routes', () => {
       .post('/api/v1/users/sessions')
       .send(mockUser);
 
-    expect(res.body).toEqual({ message: 'Sign in Successful', user });
+    expect(res.body).toEqual({ message: 'Sign in successful.', user });
   });
 });
