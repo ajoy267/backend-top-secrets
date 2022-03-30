@@ -34,4 +34,13 @@ describe('backend-top-secrets routes', () => {
 
     expect(res.body).toEqual({ message: 'Sign in successful.', user });
   });
+
+  it('DELETE route successfully logs out a user', async () => {
+    const agent = request.agent(app);
+    await UserService.create(mockUser);
+    await agent.post('/api/v1/users/sessions').send(mockUser);
+    const res = await agent.delete('/api/v1/users/sessions');
+
+    expect(res.body).toEqual({ message: 'Sign out successful' });
+  });
 });
